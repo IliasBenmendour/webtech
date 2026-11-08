@@ -1,0 +1,140 @@
+/* stijl.css - labo 6, affiche (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+
+}
+
+/* === base: narrow screens first === */
+
+/* === media queries: below the base rules === */
+
+
+/* === Basis === */
+
+body {
+    background-color: #1d1d1b;
+    font-family: Verdana, sans-serif;
+}
+
+/* === Affiche === */
+
+.affiche {
+    position: relative;
+    width: min(28rem, 100% - 2rem);
+    aspect-ratio: 3 / 4;
+    margin: 2rem auto;
+    padding: clamp(1.5rem, 6vw, 3rem);
+    background-color: #2554ab;
+    color: #fff8ee;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+}
+
+.ondertitel {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* === Stickers === */
+
+.sticker {
+    position: absolute;
+    width: clamp(4rem, 14vw, 7rem);
+    height: clamp(4rem, 14vw, 7rem);
+
+    display: grid;
+    place-items: center;
+
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    line-height: 1.2;
+    padding: 0.25rem;
+}
+
+.prijs {
+    background-color: #ffc83d;
+    color: #1d1d1b;
+    font-size: 1.25rem;
+    border-radius: 50%;
+
+    top: 2.5rem;
+    left: 2.5rem;
+    z-index: 1;
+}
+
+.datum {
+    background-color: white;
+    color: #1d1d1b;
+
+    top: 1rem;
+    left: 1rem;
+}
+
+.uitverkocht {
+    background-color: #d6341c;
+    border-radius: 50%;
+
+    top: 5.5rem;
+    left: 5.5rem;
+    z-index: 1;
+}
+
+.logo {
+    background-color: #1d1d1b;
+    font-family: Georgia, serif;
+    font-size: 1.25rem;
+
+    top: 4rem;
+    left: 4rem;
+}
+
+/* === Vanaf 800px === */
+
+@media (min-width: 50rem) {
+    .logo {
+        top: auto;
+        left: auto;
+        bottom: 6rem;
+        right: 6rem;
+    }
+
+    .uitverkocht {
+        top: auto;
+        left: auto;
+        bottom: 3rem;
+        right: 3rem;
+    }
+}
+
+/* === Vanaf 1000px === */
+
+@media (min-width: 62.5rem) {
+    .prijs {
+        top: 2rem;
+        left: auto;
+        right: 2rem;
+    }
+
+    .logo {
+        right: auto;
+        left: 2rem;
+        bottom: 2rem;
+    }
+
+    .uitverkocht {
+        bottom: 2rem;
+        right: 2rem;
+    }
+}
