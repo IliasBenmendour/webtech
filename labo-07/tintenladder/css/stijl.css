@@ -1,0 +1,72 @@
+/* stijl.css - labo 7, tintenladder (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+--color-papier:hsl(40 30% 97%);
+
+--color-inkt:hsl(210 25% 12%);
+
+--color-gedempt:hsl(210 10% 42%) ;
+
+--hue: 210;
+
+--paddingheader:2rem;
+
+--Georgia:Georgia, 'Times New Roman', Times, serif;
+
+--Verdana:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* === base === */
+body{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100svh;
+    background-color: var(--color-papier);
+}
+
+header{
+    font-size: 1.5rem;
+    font-family:var(--Georgia);
+    line-height: 1.2;
+    padding: 2rem;
+}
+
+p{
+    color: var(--color-gedempt);
+    font-size: 0.875rem;
+}
+
+.ladder{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10,1fr);
+}
+
+.trede{
+    display: flex;
+    align-items: center;
+
+    font-family: var(--Verdana);
+    font-weight: bold;
+    font-size: 0.875rem;
+    padding-left: 1rem;
+    color: var(--color-inkt);
+    
+}
+/* === the ten steps: one rule per step === */
+
+.trede:nth-child(1) {background-color: hsl(var(--hue) 55% 95%);}
+.trede:nth-child(2) {background-color: hsl(var(--hue) 55% 85%);}
+.trede:nth-child(3) { background-color: hsl(var(--hue) 55% 75%);} 
+.trede:nth-child(4) {background-color: hsl(var(--hue) 55% 65%);}
+.trede:nth-child(5) {background-color: hsl(var(--hue) 55% 55%);}
+.trede:nth-child(6) {background-color: hsl(var(--hue) 55% 45%);}
+.trede:nth-child(7) {background-color: hsl(var(--hue) 55% 35%);}
+.trede:nth-child(8) {background-color: hsl(var(--hue) 55% 25%);}
+.trede:nth-child(9) {background-color: hsl(var(--hue) 55% 15%);}
+.trede:nth-child(10) {background-color: hsl(var(--hue) 55% 5%);}
+
+.trede:nth-child(n + 6) {
+    color: var(--color-papier);
+}

@@ -1,0 +1,174 @@
+/* stijl.css - labo 7, fietsatelier (reset.css is linked before this file, thema.css after it) */
+
+/* === tokens for look A: colours, fonts, radius, type scale, spacing scale === */
+:root {
+    --oppervlak:hsl(40 30% 96%);
+    --inkt:hsl(220 20% 15%);
+    --gedempt:hsl(220 10% 42%);
+    --accent: hsl(160 50% 30%);
+    --lijn: hsl(40 15% 82%);
+    --kopfont:Georgia, 'Times New Roman', Times, serif;
+    --tekstfont:Verdana, Geneva, Tahoma, sans-serif;
+    --hoeken:0;
+
+
+    /* Tekstschalen */
+    --text-s: 0.8rem;
+    --text-m: 1rem;
+    --text-l: 1.25rem;
+    --text-xl: 1.563rem;
+    --text-xxl: 1.953rem;
+
+    /* Witruimte */
+    --space-xs: 0.25rem;
+    --space-s: 0.5rem;
+    --space-m: 1rem;
+    --space-l: 2rem;
+    --space-xl: 4rem;
+}
+
+/* === base === */
+
+body{
+    font-family: var(--tekstfont);
+    color: var(--inkt);
+    background-color: var(--oppervlak);
+    line-height: 1.5;
+    font-size: var(--text-m);
+}
+
+h1,h2,h3{
+    font-family: var(--kopfont);
+}
+
+.naam{
+    margin-right: auto;
+    font-family: var(--kopfont);
+    font-size: var(--text-l);
+    font-weight: bold;
+
+
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    gap: var(--space-m);
+}
+
+.kop a{
+     text-decoration: none;
+     color: var(--inkt);
+     font-weight: bold;
+     border-bottom: 2px solid var(--oppervlak) ;
+}
+
+.kop a:hover,.kop a:focus{
+   border-color: var(--accent) ;
+   color: var(--accent);
+}
+
+.kop{
+    display: flex;
+    align-items: center;
+    padding: var(--space-m) var(--space-l);
+    border-bottom: 1px solid var(--lijn);
+}
+
+
+
+/* === header, intro, cards, footer: every colour via var(), nothing hard-coded === */
+.intro{
+    max-width: 44rem;
+    padding: var(--space-xl) var(--space-l);
+
+}
+
+.bovenkop{
+    font-size: var(--text-s);
+    color: var(--accent);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-s);
+}
+
+.intro h1{
+    font-size: var(--text-xxl);
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: var(--space-m);
+
+}
+.lead{
+    font-size: var(--text-l);
+    color: var(--gedempt);
+    margin-bottom: var(--space-l);
+
+}
+
+.knop{
+    display: block;
+    width: fit-content;
+    background-color: var(--accent);
+    color: var(--oppervlak);
+    font-weight: bold;
+    padding: var(--space-s) var(--space-l);
+    border: 2px var(--accent) solid;
+    border-radius: var(--hoeken);
+    text-decoration: none;
+}
+
+.knop:hover,.knop:focus{
+    background-color: var(--oppervlak);
+    color: var(--accent);
+}
+
+.kaarten{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(14rem,1fr));
+    gap: var(--space-m);
+    list-style: none;
+    padding: 0 var(--space-l) var(--space-xl) var(--space-l);
+}
+
+.diensten h2{
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-m);
+    padding-left:var(--space-l);
+}
+
+.kaart{
+    border: 1px solid var(--lijn);
+    border-radius: var(--hoeken);
+    padding: var(--space-m);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.kaart h3{
+    font-size: var(--text-l);
+    margin-bottom: var(--space-s);
+    color: var(--inkt);
+
+}
+
+ul p{
+    margin-bottom: var(--space-m);
+    color: var(--gedempt);
+}
+
+.prijs{
+    color: var(--accent);
+    margin-top: auto;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+footer{
+    border-top: solid 1px var(--lijn);
+    padding: var(--space-m) var(--space-l);
+    color: var(--gedempt);
+    font-size: var(--text-s);
+}
