@@ -1,0 +1,231 @@
+
+/* stijl.css - labo 8, maaklab (reset.css and fonts.css are linked before this file) */
+
+/* === tokens: colours, fonts, sizes, and one duration and one curve (8.1) === */
+
+:root {
+
+    /* Tekstschalen */
+    --text-s: 0.8rem;
+    --text-m: 1rem;
+    --text-l: 1.25rem;
+    --text-xl: 1.563rem;
+    --text-xxl: 1.953rem;
+
+    /* Witruimte */
+    --space-xs: 0.25rem;
+    --space-s: 0.5rem;
+    --space-m: 1rem;
+    --space-l: 2rem;
+    --space-xl: 4rem;
+
+    --oppervlak: hsl(210 20% 97%);
+    --inkt: hsl(215 30% 14%);
+    --gedempt: hsl(215 10% 42%);
+    --accent: hsl(215 70% 40%);
+    --accentdonker: hsl(215 70% 30%);
+    --lijn: hsl(210 15% 84%);
+    --hoeken: 0.5rem;
+
+    --duur: 200ms;
+    --curve: ease-out;
+
+    --tekstfont: "Atkinson Hyperlegible", sans-serif;
+
+    --breedte-main: 80rem;
+    --breedte-kaart: 15rem;
+    --breedte-streep: 3rem;
+    --hoogte-streep: 0.25rem;
+    --omhoog: -0.25rem;
+    --schaduw: 0 0.5rem 1.5rem rgb(0 0 0 / 0.15);
+}
+
+/* === base === */
+body {
+    color: var(--inkt);
+    font-family: var(--tekstfont);
+    font-size: var(--text-m);
+    line-height: 1.5;
+    background-color: var(--oppervlak);
+}
+
+/* === header: links with an underline that grows from the left (8.3, 8.6) === */
+.kop {
+    display: flex;
+    align-items: center;
+    padding: var(--space-m) var(--space-l);
+    border-bottom: 1px solid var(--lijn);
+}
+
+.naam {
+    margin-right: auto;
+    font-size: var(--text-l);
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: var(--space-m);
+    list-style: none;
+}
+
+nav a {
+    position: relative;
+    display: inline-block;
+    padding: var(--space-xs) 0;
+    color: var(--inkt);
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: color var(--duur) var(--curve);
+}
+
+nav a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duur) var(--curve);
+}
+
+nav a:focus-visible {
+    color: var(--accent);
+}
+
+nav a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* === cards: transition on the base state (8.2), lift on hover and focus-within === */
+main {
+    max-width: var(--breedte-main);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-l);
+}
+
+h2 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-l);
+}
+
+h2::after {
+    content: "";
+    display: block;
+    height: var(--hoogte-streep);
+    width: var(--breedte-streep);
+    background-color: var(--accent);
+    margin-top: var(--space-s);
+}
+
+.kaarten {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--breedte-kaart), 1fr));
+    list-style: none;
+    gap: var(--space-l);
+}
+
+.kaart {
+    background-color: white;
+    border: 1px solid var(--lijn);
+    border-radius: var(--hoeken);
+    padding: var(--space-m);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+
+    transition: transform var(--duur) var(--curve),
+                box-shadow var(--duur) var(--curve);
+}
+
+.kaart:focus-within {
+    transform: translateY(var(--omhoog));
+    box-shadow: var(--schaduw);
+}
+
+.datum {
+    font-size: var(--text-s);
+    color: var(--accent);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+main h3 {
+    font-size: var(--text-l);
+    line-height: 1.3;
+}
+
+main p {
+    color: var(--gedempt);
+}
+
+.knop {
+    margin-top: auto;
+    display: block;
+    width: fit-content;
+
+    color: var(--oppervlak);
+    background-color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    padding: var(--space-s) var(--space-l);
+    border-radius: var(--hoeken);
+
+    transition: transform var(--duur) var(--curve),
+                background-color var(--duur) var(--curve);
+}
+
+.knop:focus-visible {
+    background-color: var(--accentdonker);
+}
+
+.knop:active {
+    transform: scale(0.97);
+}
+
+/* === hover only where hovering exists (6.9) === */
+@media (hover: hover) {
+    .kaart:hover {
+        transform: translateY(var(--omhoog));
+        box-shadow: var(--schaduw);
+    }
+
+    nav a:hover {
+        color: var(--accent);
+    }
+
+    nav a:hover::after {
+        transform: scaleX(1);
+    }
+
+    .knop:hover {
+        background-color: var(--accentdonker);
+    }
+}
+
+/* === footer === */
+footer {
+    border-top: 1px solid var(--lijn);
+    padding: var(--space-m) var(--space-l);
+    color: var(--gedempt);
+    font-size: var(--text-s);
+}
+
+/* === reduced motion (8.5) === */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

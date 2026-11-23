@@ -1,0 +1,72 @@
+/* stijl.css - labo 8, estafette (reset.css is linked before this file) */
+
+/* === tokens: colours, one duration, one curve and the time between two runners === */
+:root {
+     /* Tekstschalen */
+    --text-s: 0.8rem;
+    --text-m: 1rem;
+    --text-l: 1.25rem;
+    --text-xl: 1.563rem;
+    --text-xxl: 1.953rem;
+
+    /* Witruimte */
+    --space-xs: 0.25rem;
+    --space-s: 0.5rem;
+    --space-m: 1rem;
+    --space-l: 2rem;
+    --space-xl: 4rem;
+
+    --wit:hsl(0 0% 100%) ;
+    --blok1:hsl(165 34% 47%);
+    --blok2:hsl(152 36% 57%) ;
+    --blok3:hsl(187 44% 62%);
+    --blok4:hsl(192 45% 77%) ;
+
+    --duur:2s;
+    --curve: ease-in-out;
+    --wissel:250ms;
+}
+
+/* === four lanes that fill the window === */
+
+.baan{
+    height: 100svh;
+    display: grid;
+    grid-template-rows: repeat(4,1fr);
+    background-color: var(--wit);
+}
+
+/* === the runners: one animation, there and back; each one starts a little later (8.4) === */
+.loper{
+height: 25svh;
+width: 25svh;
+
+animation: anim var(--duur) var(--curve) infinite;
+animation-direction: alternate;
+}
+
+.loper:nth-child(1){ background-color: var(--blok1); animation-delay: 0ms;}
+.loper:nth-child(2){background-color: var(--blok2);animation-delay: var(--wissel);}
+.loper:nth-child(3){background-color: var(--blok3);animation-delay: calc(2 * var(--wissel)) ;}
+.loper:nth-child(4){background-color: var(--blok4);animation-delay: calc(3 * var(--wissel)) ;}
+/* === keyframes: only the way there === */
+@keyframes anim{
+    0%{
+       transform: translateX(0%);
+    }
+
+
+    100%{
+        transform: translateX(calc(100vw - 100%));
+    }
+}
+/* === reduced motion (8.5) === */
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

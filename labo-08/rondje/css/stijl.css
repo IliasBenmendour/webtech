@@ -1,0 +1,80 @@
+/* stijl.css - labo 8, rondje (reset.css is linked before this file) */
+
+/* === tokens: colours, one duration and one curve (8.1) === */
+:root {
+
+     /* Tekstschalen */
+    --text-s: 0.8rem;
+    --text-m: 1rem;
+    --text-l: 1.25rem;
+    --text-xl: 1.563rem;
+    --text-xxl: 1.953rem;
+
+    /* Witruimte */
+    --space-xs: 0.25rem;
+    --space-s: 0.5rem;
+    --space-m: 1rem;
+    --space-l: 2rem;
+    --space-xl: 4rem;
+
+    --papier:hsl(47 20% 92%);
+    --geel:hsl(50 88% 61%);
+    --oranje:hsl(27 67% 48%);
+    --rood:hsl(8 72% 35%);
+    --bordeaux:hsl(2 80% 25%) ;
+
+    --duur: 8s;
+    --curve:ease-in-out
+
+}
+
+/* === the stage fills the window === */
+.piste{
+    height: 100svh;
+    background-color: var(--papier);
+}
+
+/* === the box and its animation (8.4) === */
+.blok{
+    background-color: var(--geel);
+    width: 50%;
+    height: 50%;
+
+    animation: draai var(--duur) var(--curve) infinite;
+}
+
+/* === keyframes: four stops, a place and a colour each === */
+@keyframes draai{
+    0%,100%{
+        background-color: var(--geel);
+        transform: translateX(0%);
+
+    }
+
+    25%{
+        background-color: var(--oranje);
+        transform: translateX(100%);
+   
+    }
+
+    50%{
+        background-color: var(--rood);
+        transform: translateX(100%) translateY(100%);
+        
+    }
+
+    75%{
+        background-color: var(--bordeaux);
+        transform: translateX(0%) translateY(100%);
+    }
+}
+/* === reduced motion (8.5) === */
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        animation-iteration-count: 1 !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,88 @@
+/* stijl.css - labo 8, pijlen (reset.css is linked before this file) */
+
+/* === tokens: colours, the three shapes, one duration and one curve === */
+:root {
+ /* Tekstschalen */
+    --text-s: 0.8rem;
+    --text-m: 1rem;
+    --text-l: 1.25rem;
+    --text-xl: 1.563rem;
+    --text-xxl: 1.953rem;
+
+    /* Witruimte */
+    --space-xs: 0.25rem;
+    --space-s: 0.5rem;
+    --space-m: 1rem;
+    --space-l: 2rem;
+    --space-xl: 4rem;
+
+    --papier:hsl(47 20% 92%);
+    --oranje:hsl(28 78% 58%);
+    --groen:hsl(113 62% 64%);
+    --blauw:hsl(190 60% 65%);
+
+    --duur:6s;
+    --curve:ease-in-out;
+
+    --pijl-rechts: polygon(0 0, 60% 0, 100% 50%, 60% 100%, 0 100%, 40% 50%);
+    --vierkant: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 50%);
+    --pijl-links: polygon(40% 0, 100% 0, 60% 50%, 100% 100%, 40% 100%, 0 50%);
+
+}
+
+/* === the grid in the middle of the window (4.7) === */
+body{
+    background-color: var(--papier);
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+}
+
+.rooster{
+    margin: 0 auto;
+    background-color: var(--papier);
+    display: grid;
+    grid-template-columns: repeat(3,10rem);
+    gap: 3rem;
+    width: fit-content;
+}
+
+/* === the tiles: a shape and a colour that change together (8.4, 8.6) === */
+.tegel{
+    height: 8rem;
+    clip-path: var(--pijl-rechts);
+
+    animation: anim var(--duur) var(--curve) infinite;
+}
+
+.tegel:nth-child(even){
+    animation-delay: calc(var(--duur)/-3);
+}
+/* === keyframes: three stops === */
+@keyframes anim{
+    0%,100%{clip-path: var(--pijl-rechts);
+        background-color: var(--oranje);
+
+    }
+
+    33%{
+        clip-path: var(--vierkant);
+        background-color: var(--groen);
+    }
+
+    66%{
+        clip-path: var(--pijl-links);
+        background-color: var(--blauw);
+    }
+
+}
+/* === reduced motion (8.5) === */
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        animation-iteration-count: 1 !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
